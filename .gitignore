@@ -14,3 +14,4 @@ mnist
 test*tflearn*
 /examples/nlp/char_idx.pickle
 /examples/nlp/shakespeare_input.txt
+/examples/nlp/donquijote_spanish_only.txt
