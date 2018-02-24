@@ -40,12 +40,12 @@ g = tflearn.regression(g, optimizer='adam', loss='categorical_crossentropy',
 m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               seq_maxlen=maxlen,
                               clip_gradients=5.0,
-                              checkpoint_path='model_shakespeare')
+                              checkpoint_path='model_quijote')
 
 for i in range(50):
     seed = random_sequence_from_textfile(path, maxlen)
     m.fit(X, Y, validation_set=0.1, batch_size=128,
-          n_epoch=1, run_id='shakespeare')
+          n_epoch=1, run_id='quijote')
     print("-- TESTING...")
     print("-- Test with temperature of 1.0 --")
     print(m.generate(600, temperature=1.0, seq_seed=seed))
