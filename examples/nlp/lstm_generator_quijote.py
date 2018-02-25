@@ -7,7 +7,7 @@ from six.moves import urllib
 import tflearn
 from tflearn.data_utils import *
 
-path = "donquijote_spanish_only.txt"
+path = "donquijote.txt"
 char_idx_file = 'char_idx.pickle'
 
 # if not os.path.isfile(path):
