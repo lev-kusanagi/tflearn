@@ -12,3 +12,5 @@ checkpoint
 htmlcov
 mnist
 test*tflearn*
+/examples/nlp/shakespeare_input_short.txt
+/examples/nlp/char_idx.pickle
