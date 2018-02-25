@@ -18,3 +18,4 @@ test*tflearn*
 *.data*
 *.index
 *.meta
+/examples/nlp/donquijote.txt
