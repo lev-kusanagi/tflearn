@@ -1,6 +1,6 @@
 import unidecode
 
-with open ("donquijote_only_spanish.txt", "r") as myfile:
+with open ("donquijote_spanish_only.txt", "r") as myfile:
     data=myfile.readlines()
 
 new_data = []
