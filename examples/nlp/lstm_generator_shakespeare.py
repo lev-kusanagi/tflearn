@@ -7,11 +7,11 @@ from six.moves import urllib
 import tflearn
 from tflearn.data_utils import *
 
-path = "shakespeare_input.txt"
+path = "shakespeare_input_short.txt"
 char_idx_file = 'char_idx.pickle'
 
-if not os.path.isfile(path):
-    urllib.request.urlretrieve("https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/shakespeare_input.txt", path)
+# if not os.path.isfile(path):
+#     urllib.request.urlretrieve("https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/shakespeare_input.txt", path)
 
 maxlen = 25
 
@@ -42,7 +42,7 @@ m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               clip_gradients=5.0,
                               checkpoint_path='model_shakespeare')
 
-for i in range(50):
+for i in range(1):
     seed = random_sequence_from_textfile(path, maxlen)
     m.fit(X, Y, validation_set=0.1, batch_size=128,
           n_epoch=1, run_id='shakespeare')
@@ -51,3 +51,5 @@ for i in range(50):
     print(m.generate(600, temperature=1.0, seq_seed=seed))
     print("-- Test with temperature of 0.5 --")
     print(m.generate(600, temperature=0.5, seq_seed=seed))
+
+m.save("my_shakespeare_model.tfl")
