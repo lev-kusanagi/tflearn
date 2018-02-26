@@ -1,1 +1,1 @@
-FROM tensorflow:tensorflow
+FROM tensorflow/tensorflow
