@@ -19,3 +19,4 @@ test*tflearn*
 *.index
 *.meta
 /examples/nlp/donquijote.txt
+/examples/nlp/char_idx.pickle.shakespeare
