@@ -39,7 +39,6 @@ m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               clip_gradients=5.0,
                               checkpoint_path='model_quijote')
 
-m.load("model_quijote-245900")
-# seed = random_sequence_from_textfile(path, maxlen)
-seed = 'la mancha'
+m.load("quijote_trained_model/model_quijote-245900")
+seed = random_sequence_from_textfile(path, maxlen)
 print(m.generate(600, temperature=1.0, seq_seed=seed))
