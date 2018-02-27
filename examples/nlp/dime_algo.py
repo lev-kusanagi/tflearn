@@ -16,7 +16,6 @@ maxlen = 25
 
 char_idx = None
 if os.path.isfile(char_idx_file):
-  print('Loading previous char_idx')
   char_idx = pickle.load(open(char_idx_file, 'rb'))
 
 # X, Y, char_idx = \
