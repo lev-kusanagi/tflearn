@@ -13,7 +13,7 @@ char_idx_file = 'char_idx.pickle'
 # if not os.path.isfile(path):
 #     urllib.request.urlretrieve("https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/shakespeare_input.txt", path)
 
-maxlen = 50
+maxlen = 25
 
 char_idx = None
 if os.path.isfile(char_idx_file):
@@ -30,9 +30,13 @@ g = tflearn.input_data([None, maxlen, len(char_idx)])
 g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.5)
 g = tflearn.lstm(g, 1024, return_seq=True)
-g = tflearn.dropout(g, 0.5)
-g = tflearn.lstm(g, 1024)
-g = tflearn.dropout(g, 0.5)
+g = tflearn.dropout(g, 0.8)
+g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.dropout(g, 0.85)
+g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.dropout(g, 0.85)
+# g = tflearn.lstm(g, 512)
+# g = tflearn.dropout(g, 0.5)
 g = tflearn.fully_connected(g, len(char_idx), activation='softmax')
 g = tflearn.regression(g, optimizer='adam', loss='categorical_crossentropy',
                        learning_rate=0.001)
