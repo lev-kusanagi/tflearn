@@ -16,5 +16,6 @@ test*tflearn*
 /examples/nlp/donquijote_spanish_only.txt
 *.data*
 *.index
-*.meta
 /examples/nlp/char_idx.pickle.shakespeare
+examples/nlp/quijote_checkpoints/
+examples/nlp/shakespeare_checkpoints/
