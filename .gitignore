@@ -14,8 +14,6 @@ mnist
 test*tflearn*
 /examples/nlp/shakespeare_input.txt
 /examples/nlp/donquijote_spanish_only.txt
-*.data*
-*.index
 /examples/nlp/char_idx.pickle.shakespeare
 examples/nlp/quijote_checkpoints/
 examples/nlp/shakespeare_checkpoints/
