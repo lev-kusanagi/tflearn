@@ -7,8 +7,11 @@ import pickle
 import tflearn
 from tflearn.data_utils import *
 
-path = "donquijote.txt"
-char_idx_file = 'char_idx.pickle'
+dir_path = os.path.dirname(os.path.realpath(__file__))
+path = dir_path + "/donquijote.txt"
+char_idx_file = dir_path + '/char_idx.pickle'
+
+print(path)
 
 maxlen = 25
 
