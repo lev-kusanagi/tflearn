@@ -13,7 +13,7 @@ char_idx_file = 'char_idx.pickle'
 # if not os.path.isfile(path):
 #     urllib.request.urlretrieve("https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/shakespeare_input.txt", path)
 
-maxlen = 25
+maxlen = 50
 
 char_idx = None
 if os.path.isfile(char_idx_file):
@@ -27,11 +27,15 @@ X, Y, char_idx = \
 pickle.dump(char_idx, open(char_idx_file,'wb'))
 
 g = tflearn.input_data([None, maxlen, len(char_idx)])
-g = tflearn.lstm(g, 512, return_seq=True)
+g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.5)
-g = tflearn.lstm(g, 512, return_seq=True)
+g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.5)
-g = tflearn.lstm(g, 512)
+g = tflearn.lstm(g, 1024)
+g = tflearn.dropout(g, 0.5)
+g = tflearn.lstm(g, 1024)
+g = tflearn.dropout(g, 0.5)
+g = tflearn.lstm(g, 1024)
 g = tflearn.dropout(g, 0.5)
 g = tflearn.fully_connected(g, len(char_idx), activation='softmax')
 g = tflearn.regression(g, optimizer='adam', loss='categorical_crossentropy',
@@ -42,7 +46,7 @@ m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               clip_gradients=5.0,
                               checkpoint_path='model_quijote')
 
-for i in range(50):
+for i in range(100):
     seed = random_sequence_from_textfile(path, maxlen)
     m.fit(X, Y, validation_set=0.1, batch_size=128,
           n_epoch=1, run_id='quijote')
