@@ -10,8 +10,7 @@ from tflearn.data_utils import *
 dir_path = os.path.dirname(os.path.realpath(__file__))
 path = dir_path + "/donquijote.txt"
 char_idx_file = dir_path + '/char_idx.pickle'
-
-print(path)
+model_path = dir_path + "/quijote_trained_model/model_quijote-245900"
 
 maxlen = 25
 
@@ -42,6 +41,6 @@ m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               clip_gradients=5.0,
                               checkpoint_path='model_quijote')
 
-m.load("quijote_trained_model/model_quijote-245900")
+m.load(model_path)
 seed = random_sequence_from_textfile(path, maxlen)
 print(m.generate(600, temperature=1.0, seq_seed=seed))
