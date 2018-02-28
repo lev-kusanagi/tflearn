@@ -7,6 +7,11 @@ from six.moves import urllib
 import tflearn
 from tflearn.data_utils import *
 
+# Config
+loading_from_checkpoint = True
+checkpoint_model_path = 'model_quijote-29508'
+num_epochs = 50
+
 path = "donquijote.txt"
 char_idx_file = 'char_idx.pickle'
 
@@ -46,7 +51,10 @@ m = tflearn.SequenceGenerator(g, dictionary=char_idx,
                               clip_gradients=5.0,
                               checkpoint_path='model_quijote')
 
-for i in range(100):
+if loading_from_checkpoint == True:
+  m.load(checkpoint_model_path)
+
+for i in range(num_epochs):
     seed = random_sequence_from_textfile(path, maxlen)
     m.fit(X, Y, validation_set=0.1, batch_size=128,
           n_epoch=1, run_id='quijote')
