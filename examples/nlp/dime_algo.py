@@ -10,7 +10,7 @@ from tflearn.data_utils import *
 dir_path = os.path.dirname(os.path.realpath(__file__))
 path = dir_path + "/donquijote.txt"
 char_idx_file = dir_path + '/char_idx.pickle'
-model_path = "/model_quijote-275408"
+model_path = dir_path + "/quijote_trained_model/model_quijote-275408"
 
 maxlen = 25
 
