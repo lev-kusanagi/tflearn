@@ -10,7 +10,7 @@ from tflearn.data_utils import *
 dir_path = os.path.dirname(os.path.realpath(__file__))
 path = dir_path + "/donquijote.txt"
 char_idx_file = dir_path + '/char_idx.pickle'
-model_path = dir_path + "/quijote_trained_model/model_quijote-245900"
+model_path = "/model_quijote-275408"
 
 maxlen = 25
 
@@ -25,12 +25,14 @@ if os.path.isfile(char_idx_file):
 # pickle.dump(char_idx, open(char_idx_file,'wb'))
 
 g = tflearn.input_data([None, maxlen, len(char_idx)])
-g = tflearn.lstm(g, 512, return_seq=True)
+g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.5)
-g = tflearn.lstm(g, 512, return_seq=True)
-g = tflearn.dropout(g, 0.5)
-g = tflearn.lstm(g, 512)
-g = tflearn.dropout(g, 0.5)
+g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.dropout(g, 0.8)
+g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.dropout(g, 0.85)
+g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.dropout(g, 0.85)
 g = tflearn.fully_connected(g, len(char_idx), activation='softmax')
 g = tflearn.regression(g, optimizer='adam', loss='categorical_crossentropy',
                        learning_rate=0.001)
