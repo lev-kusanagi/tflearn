@@ -33,7 +33,7 @@ g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.8)
 g = tflearn.lstm(g, 1024, return_seq=True)
 g = tflearn.dropout(g, 0.85)
-g = tflearn.lstm(g, 1024, return_seq=True)
+g = tflearn.lstm(g, 1024)
 g = tflearn.dropout(g, 0.85)
 g = tflearn.fully_connected(g, len(char_idx), activation='softmax')
 g = tflearn.regression(g, optimizer='adam', loss='categorical_crossentropy',
