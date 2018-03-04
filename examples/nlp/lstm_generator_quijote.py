@@ -9,8 +9,8 @@ from tflearn.data_utils import *
 
 # Config
 loading_from_checkpoint = True
-checkpoint_model_path = 'model_quijote-49180'
-num_epochs = 50
+checkpoint_model_path = 'model_quijote-408194'
+num_epochs = 25
 
 path = "donquijote.txt"
 char_idx_file = 'char_idx.pickle'
@@ -55,7 +55,7 @@ if loading_from_checkpoint == True:
 for i in range(num_epochs):
     seed = random_sequence_from_textfile(path, maxlen)
     m.fit(X, Y, validation_set=0.1, batch_size=128,
-          n_epoch=1, run_id='q-CPUcompat-yet-beefy-lr0001')
+          n_epoch=1, run_id='big-compatible-lr0001-add-30-epochs-more-v3')
     print("-- TESTING...")
     print("-- Test with temperature of 1.0 --")
     print(m.generate(600, temperature=1.0, seq_seed=seed))
